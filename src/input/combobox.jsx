@@ -130,6 +130,7 @@ const Combobox = ({
           helperText={helperText}
           inputRef={inputRef}
           name={name}
+          aria-controls="combobox-menu"
           role="combobox"
         />
 
@@ -139,6 +140,8 @@ const Combobox = ({
               onSelect: select,
               options: menuOptions,
               open: isOpen && Boolean(options.length),
+              'aria-expanded': isOpen && Boolean(options.length),
+              id: 'combobox-menu',
               onClose: closeMenu,
               anchorEl: inputRef.current,
               disableAutoFocusItem: true,
