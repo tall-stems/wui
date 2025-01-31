@@ -132,16 +132,16 @@ const Combobox = ({
           name={name}
           aria-controls="combobox-menu"
           role="combobox"
+          aria-expanded={isOpen && Boolean(options.length)}
         />
 
         {isOpen && (
           <DropdownMenu
             {...getMenuProps({
+              id: 'combobox-menu',
               onSelect: select,
               options: menuOptions,
               open: isOpen && Boolean(options.length),
-              'aria-expanded': isOpen && Boolean(options.length),
-              id: 'combobox-menu',
               onClose: closeMenu,
               anchorEl: inputRef.current,
               disableAutoFocusItem: true,
@@ -152,6 +152,10 @@ const Combobox = ({
               transformOrigin: {
                 vertical: 'top',
                 horizontal: 'left',
+              },
+              MenuListProps: {
+                'aria-label': 'combobox-menu',
+                role: 'listbox',
               },
               disableAutoFocus: true,
               disableRestoreFocus: true,
